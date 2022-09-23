@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>673262348850-o21ovku62vvuaovml2bto0n2363v8ojf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.673262348850-o21ovku62vvuaovml2bto0n2363v8ojf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyASW0fEIYOu8QAPbI1jvI6aJJKv_dwF3n4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>673262348850</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.learningProject</string>
+	<key>PROJECT_ID</key>
+	<string>ghiblie-films</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ghiblie-films.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:673262348850:ios:5eb001831e219ffed66a2b</string>
+</dict>
+</plist>
