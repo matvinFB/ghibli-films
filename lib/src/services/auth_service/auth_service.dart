@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class IAuthService {
-  bool isLoggedIn = false;
-
   void login(String user, String password);
   void logout();
+  void signUp(String user, String password);
+  bool checkLogin();
 }
 
 class AuthService implements IAuthService {
@@ -28,26 +28,34 @@ class AuthService implements IAuthService {
 
   @override
   Future login(String user, String password) async {
-    print('LOGIN SEM FIREBASE!!!!');
-    isLoggedIn= true;
-    return;
+    //print('LOGIN SEM FIREBASE!!!!');
+    //isLoggedIn= true;
+    //return;
     try {
       credential = await _auth.signInWithEmailAndPassword(
           email: user, password: password);
-      isLoggedIn = true;
     } catch (e) {
       print(e);
-      isLoggedIn = false;
+    }finally{
+      isLoggedIn = checkLogin();
     }
   }
 
   Future signUp(String user, String password) async{
     credential = await _auth.createUserWithEmailAndPassword(
           email: user, password: password);
+    isLoggedIn = checkLogin();
   }
 
   @override
-  void logout() {
-    isLoggedIn = false;
+  Future logout() async{
+    await _auth.signOut();
+    isLoggedIn = checkLogin();
   }
+
+  bool checkLogin(){
+    print('User is ${user==null?false:true}');
+    return user==null?false:true;
+  }
+
 }

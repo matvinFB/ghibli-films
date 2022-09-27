@@ -33,8 +33,8 @@ abstract class _HomeControllerBase with Store {
   }
 
   @action 
-  void logout(){
-    authService.logout();
+  void logout()async{
+    await authService.logout();
     isLoggedIn = authService.isLoggedIn;
   }
 
