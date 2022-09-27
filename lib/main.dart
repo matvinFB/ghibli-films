@@ -17,6 +17,5 @@ void main() async{
   services.registerSingleton<AuthService>(AuthService(false));
   services.registerSingleton<GhibliService>(GhibliService.create());
   services.registerSingleton<ThemeController>(ThemeController());
-
   runApp(MyApp());
 }
