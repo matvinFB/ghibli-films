@@ -5,7 +5,7 @@ import 'package:learning_project/src/login/login_view.dart';
 
 
 class MyApp extends StatelessWidget {
-  var _themeManager = ThemeController();
+  final _themeManager = ThemeController();
   
   @override
   Widget build(BuildContext context) {    
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       darkTheme: _themeManager.darkTheme,
       themeMode: _themeManager.isDarkThemeActive? ThemeMode.dark:ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: const LoginView(),
     );
   }
 }
