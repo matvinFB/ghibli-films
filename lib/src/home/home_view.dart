@@ -3,12 +3,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:learning_project/src/home/widgets/filmListViewItem.dart';
 import 'package:learning_project/src/home/home_controller.dart';
-import 'package:learning_project/src/models/film.dart';
 import 'package:mobx/mobx.dart';
-import 'package:flutter/src/widgets/basic.dart' as basic;
 
 import '../config/themes/theme_controller.dart';
-import '../services/ghibli_service/ghibli_service.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -43,7 +40,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
 
     autorunDisposable = autorun(
@@ -79,13 +75,21 @@ class _HomeViewState extends State<HomeView> {
               Padding(
                 padding: const EdgeInsets.only(top: 70),
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       color: Colors.amber,
-                      borderRadius: BorderRadius.only(
+                      gradient: RadialGradient(
+                          radius: 0.1,
+                          tileMode: TileMode.mirror,
+                          colors: [
+                            currentTheme.primaryColor.withAlpha(240),
+                            Colors.amber.shade700.withAlpha(240)
+                          ]),
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(80),
                           topRight: Radius.circular(80)),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
+                            color: Colors.black,
                             offset: Offset(0, -5),
                             blurRadius: 10,
                             spreadRadius: 0)
@@ -102,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
                             var film = homeController.films[index];
                             return FilmListViewItem(film, index);
                           },
-                          padding: EdgeInsets.only(top: 15),
+                          padding: const EdgeInsets.only(top: 15),
                         ),
                         homeController.isFetchingFilmes
                             ? Align(
@@ -110,9 +114,9 @@ class _HomeViewState extends State<HomeView> {
                                 child: Container(
                                   height: 35,
                                   width: 35,
-                                  padding: EdgeInsets.all(10),
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.all(10),
+                                  margin: const EdgeInsets.only(bottom: 10),
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(18)),
