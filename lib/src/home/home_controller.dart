@@ -6,10 +6,10 @@ import '../models/film.dart';
 import '../services/ghibli_service/ghibli_service.dart';
 part 'home_controller.g.dart';
 
+// ignore: library_private_types_in_public_api
 class HomeController = _HomeControllerBase with _$HomeController;
 
-abstract class _HomeControllerBase with Store { 
-
+abstract class _HomeControllerBase with Store {
   var authService = GetIt.I.get<AuthService>();
   var ghibliService = GetIt.I.get<GhibliService>();
   int _numberItemsToFetch = 5;
@@ -22,23 +22,24 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   List<dynamic> films = <Film>[];
-  
-  @action 
-  Future fetchFilms() async{
+
+  @action
+  Future fetchFilms() async {
     isFetchingFilmes = true;
-    print(_numberItemsToFetch);
-    films = (await ghibliService.fetchFilms(_numberItemsToFetch)).body.map((e)=>Film.fromJson(e)).toList();
+    films = (await ghibliService.fetchFilms(_numberItemsToFetch))
+        .body
+        .map((e) => Film.fromJson(e))
+        .toList();
     isFetchingFilmes = false;
-    _numberItemsToFetch+=5;
+    _numberItemsToFetch += 5;
   }
 
-  @action 
-  void logout()async{
+  @action
+  void logout() async {
     await authService.logout();
     isLoggedIn = authService.isLoggedIn;
   }
 
   @action
   void checkLogin() => isLoggedIn = authService.isLoggedIn;
-
 }

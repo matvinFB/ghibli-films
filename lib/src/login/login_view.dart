@@ -44,12 +44,12 @@ class _LoginViewState extends State<LoginView> {
           showDialog(
               context: context,
               builder: ((context) => AlertDialog(
-                    title: Text('Deseja se cadastrar?'),
+                    title: const Text('Deseja se cadastrar?'),
                     backgroundColor: currentTheme.primaryColor,
                     content: Observer(builder: (context) {
                       return Wrap(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 25,
                             child: Text('Confirme sua senha!',
                                 style: currentTheme.textTheme.titleMedium),
@@ -60,8 +60,11 @@ class _LoginViewState extends State<LoginView> {
                             style: currentTheme.textTheme.labelSmall,
                             onChanged: (value) {
                               loginController.validatePasswordField(value);
-                              if(loginController.isLoginButtonActive && loginController.confirmPassword(passwordController.text, value)){
-                                loginController.signUp(userController.text, passwordController.text);
+                              if (loginController.isLoginButtonActive &&
+                                  loginController.confirmPassword(
+                                      passwordController.text, value)) {
+                                loginController.signUp(userController.text,
+                                    passwordController.text);
                               }
                             },
                             decoration: InputDecoration(
@@ -93,10 +96,10 @@ class _LoginViewState extends State<LoginView> {
       child: Container(
         height: 370,
         width: 370,
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
           color: currentTheme.primaryColor,
-          borderRadius: BorderRadius.all(Radius.circular(175)),
+          borderRadius: const BorderRadius.all(Radius.circular(175)),
         ),
         child: Center(
           child: Column(

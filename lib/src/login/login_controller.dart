@@ -4,6 +4,7 @@ import 'package:learning_project/src/services/auth_service/auth_service.dart';
 
 part 'login_controller.g.dart';
 
+// ignore: library_private_types_in_public_api
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
@@ -31,7 +32,7 @@ abstract class _LoginControllerBase with Store {
   void validateUserField(String user) {
     var userRegex = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    if (!userRegex.hasMatch(user) && user.length > 0) {
+    if (!userRegex.hasMatch(user) && user.isNotEmpty) {
       isLoginButtonActive = false;
       userFieldErrorMessage = 'Email inválido';
       return;
@@ -42,7 +43,7 @@ abstract class _LoginControllerBase with Store {
 
   @action
   void validatePasswordField(String password) {
-    if (password.length == 0) {
+    if (password.isEmpty) {
       isLoginButtonActive = false;
       passwordFieldErrorMessage = null;
       return;
@@ -56,14 +57,15 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action
-  bool confirmPassword(String password, String passwordConfirmation) => password == passwordConfirmation; 
+  bool confirmPassword(String password, String passwordConfirmation) =>
+      password == passwordConfirmation;
 
   @action
   Future login(String user, String password) async {
-    try{
+    try {
       await authService.login(user, password);
-    }catch(e){
-      print(e);
+    } catch (e) {
+      rethrow;
     }
 
     isLoggedIn = authService.isLoggedIn;
@@ -76,8 +78,7 @@ abstract class _LoginControllerBase with Store {
       await authService.signUp(user, password);
       isLoggedIn = authService.isLoggedIn;
     } catch (e) {
-      print(e);
-      print('erro no cadastro');
+      rethrow;
     }
   }
 

@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'light_theme.dart';
 part 'theme_controller.g.dart';
 
+// ignore: library_private_types_in_public_api
 class ThemeController = _ThemeControllerBase with _$ThemeController;
 
 abstract class _ThemeControllerBase with Store {
@@ -20,5 +21,5 @@ abstract class _ThemeControllerBase with Store {
 
   ThemeData get darkTheme => $darkTheme;
 
-  ThemeData get currentTheme => isDarkThemeActive?darkTheme:lightTheme;
+  ThemeData get currentTheme => isDarkThemeActive ? darkTheme : lightTheme;
 }

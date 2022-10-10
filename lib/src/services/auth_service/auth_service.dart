@@ -8,11 +8,10 @@ abstract class IAuthService {
 }
 
 class AuthService implements IAuthService {
-  @override
   bool isLoggedIn;
 
   User? user;
-  var _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
 
   late UserCredential credential;
 
@@ -35,27 +34,27 @@ class AuthService implements IAuthService {
       credential = await _auth.signInWithEmailAndPassword(
           email: user, password: password);
     } catch (e) {
-      print(e);
-    }finally{
+      rethrow;
+    } finally {
       isLoggedIn = checkLogin();
     }
   }
 
-  Future signUp(String user, String password) async{
+  @override
+  Future signUp(String user, String password) async {
     credential = await _auth.createUserWithEmailAndPassword(
-          email: user, password: password);
+        email: user, password: password);
     isLoggedIn = checkLogin();
   }
 
   @override
-  Future logout() async{
+  Future logout() async {
     await _auth.signOut();
     isLoggedIn = checkLogin();
   }
 
-  bool checkLogin(){
-    print('User is ${user==null?false:true}');
-    return user==null?false:true;
+  @override
+  bool checkLogin() {
+    return user == null ? false : true;
   }
-
 }

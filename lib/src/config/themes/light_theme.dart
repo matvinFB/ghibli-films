@@ -28,7 +28,7 @@ final $lightTheme = ThemeData(
             Shadow(
                 color: Colors.amber.shade900.withOpacity(0.5),
                 blurRadius: 2,
-                offset: Offset(0, 1))
+                offset: const Offset(0, 1))
           ])),
   iconTheme: IconThemeData(
     color: Colors.amber.shade900,
@@ -38,18 +38,15 @@ final $lightTheme = ThemeData(
       selectionColor: Colors.amber.shade300,
       selectionHandleColor: Colors.amber.shade900),
   inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: Colors.amber.shade100,
-    focusColor: Colors.amber.shade900,
-    iconColor: Colors.amber.shade900,
-    enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.amber.shade600, width: 3)),
-    focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.amber.shade900)),
-        errorStyle: TextStyle(
-          shadows: []
-        )
-  ),
+      filled: true,
+      fillColor: Colors.amber.shade100,
+      focusColor: Colors.amber.shade900,
+      iconColor: Colors.amber.shade900,
+      enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.amber.shade600, width: 3)),
+      focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.amber.shade900)),
+      errorStyle: const TextStyle(shadows: [])),
   appBarTheme: AppBarTheme(
       color: Colors.amber.shade100,
       iconTheme: IconThemeData(
